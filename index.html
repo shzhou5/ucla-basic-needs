@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCLA Basic Needs Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">UCLA Basic Needs</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#food">Food Security</a></li>
+                    <li><a href="#housing">Housing</a></li>
+                    <li><a href="#health">Health</a></li>
+                </ul>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search resources...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+        <div class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>UCLA Basic Needs Resources</h1>
+                    <p class="hero-subtitle">Supporting Bruins with access to food, housing, and health resources</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home" class="welcome-section">
+            <h2>Welcome Bruins! Explore Basic Needs Resources</h2>
+            
+            <div class="welcome-content">
+                <div class="stats-container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>44%</h3>
+                            <p>of UC students experience food insecurity</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-home"></i>
+                            <h3>1 in 5</h3>
+                            <p>UC students experience housing insecurity</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-heart"></i>
+                            <h3>60%</h3>
+                            <p>of students report anxiety affecting academics</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Visualization Section -->
+                <div class="visualizations-section">
+                    <h3><i class="fas fa-chart-line"></i> Student Needs Assessment</h3>
+                    <p>Understanding student needs to better serve our community.</p>
+                    
+                    <div class="visualization-grid">
+                        <div class="visualization-card full-width">
+                            <div class="chart-container">
+                                <canvas id="needsAssessmentChart"></canvas>
+                            </div>
+                            <div class="chart-options">
+                                <select id="assessmentFilter" class="chart-select">
+                                    <option value="all">All Students</option>
+                                    <option value="undergrad">Undergraduates</option>
+                                    <option value="grad">Graduates</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="source">Source: <a href="https://www.universityofcalifornia.edu/about-us/information-center/student-basic-needs" target="_blank">UC Basic Needs Dashboard</a></p>
+            </div>
+        </section>
+
+        <section id="food" class="resource-category">
+            <h2><i class="fas fa-utensils"></i> Food Security Resources</h2>
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="calfresh">CalFresh</button>
+                    <button class="tab-btn" data-tab="food-closet">Food Closet</button>
+                    <button class="tab-btn" data-tab="bruin-dine">Bruin Dine</button>
+                    <button class="tab-btn" data-tab="emergency-swipes">Emergency Swipes</button>
+                    <button class="tab-btn" data-tab="strathmore">Basic Needs at Strathmore</button>
+                    <button class="tab-btn" data-tab="other-food">Other Resources</button>
+                </div>
+                
+                <!-- CalFresh Tab -->
+                <div class="tab-content active" id="calfresh">
+                    <h3>CalFresh Food Assistance</h3>
+                    <p>CalFresh provides monthly food benefits to help low-income individuals and families purchase the food they need. As a UCLA student, you may be eligible for up to $291 per month for groceries.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.getcalfresh.org/?source=ucla" target="_blank" class="btn primary">Apply Now</a>
+                        <a href="https://basicneeds.ucla.edu/eligibility" target="_blank" class="btn secondary">Check Eligibility</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>UCLA CalFresh Initiative</h4>
+                        <p>The UCLA CalFresh Initiative helps students apply for CalFresh benefits through one-on-one assistance.</p>
+                        
+                        <div class="hours-location">
+                            <h5>Fall 2025 Office Hours:</h5>
+                            <ul>
+                                <li><strong>Virtual:</strong> Mon 1:00-3:30 PM, Tue 8:00-10:30 AM, Thu 6:00-8:00 PM (Zoom)</li>
+                                <li><strong>In-Person:</strong> Tue 1:00-3:30 PM, Wed 3:00-6:00 PM, Fri 12:00-2:30 PM</li>
+                                <li><strong>Location:</strong> Student Activities Center (SAC) Suite B02-B</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food Closet Tab -->
+                <div class="tab-content" id="food-closet">
+                    <h3>CPO Food Closet</h3>
+                    <p>The CPO Food Closet provides free food and hygiene items to UCLA students facing food insecurity. No appointment is needed, and all students are welcome.</p>
+                    
+                    <div class="resource-details">
+                        <h4>Location & Hours</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> 398 Westwood Plaza, Student Activities Center (SAC) B44, Los Angeles, CA 90095</p>
+                        
+                        <div class="hours-location">
+                            <h5>Winter 2025 Hours:</h5>
+                            <ul>
+                                <li><strong>Monday-Thursday:</strong> 9:00 AM - 7:00 PM</li>
+                                <li><strong>Friday:</strong> 9:00 AM - 5:00 PM</li>
+                                <li><strong>Saturday-Sunday:</strong> 12:00 PM - 5:00 PM</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility:</h5>
+                            <ul>
+                                <li>Must be a currently enrolled UCLA student</li>
+                                <li>UCLA ID required for first visit</li>
+                                <li>No income verification required</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-phone"></i> (310) 206-3400</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:foodcloset@saonet.ucla.edu">foodcloset@saonet.ucla.edu</a></p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.cpo.ucla.edu/cpo/food-closet/" target="_blank">CPO Food Closet Website</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bruin Dine Tab -->
+                <div class="tab-content" id="bruin-dine">
+                    <h3>Bruin Dine</h3>
+                    <p>Bruin Dine is a student-run organization founded in 2018 that works to bridge the gap between food waste and food insecurity by recovering food from UCLA dining halls that would have otherwise been thrown away and redistributing it to students and staff in need.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.instagram.com/uclabruindine/" target="_blank" class="btn primary">Follow on Instagram</a>
+                        <a href="https://basicneeds.ucla.edu/services/bruin-dine" target="_blank" class="btn secondary">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>How It Works</h4>
+                        <p>Bruin Dine recovers surplus food from UCLA dining halls three times a week during the academic year and distributes it to students in need, helping to reduce food waste while addressing food insecurity on campus.</p>
+                        
+                        <div class="hours-location">
+                            <h5>Meal Service Hours:</h5>
+                            <p><i class="fas fa-utensils"></i> <strong>When:</strong> Tuesdays, Wednesdays, and Thursdays at 10:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Where:</strong> Student Activities Center (SAC) Basement, Conference Rooms 1 & 2</p>
+                            <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Please bring your own containers and utensils to help reduce waste</p>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Important Information:</h5>
+                            <ul>
+                                <li>Service runs during weeks 1-10 of each academic quarter</li>
+                                <li>Open to all UCLA students, staff, and faculty</li>
+                                <li>No sign-up or registration required</li>
+                                <li>First-come, first-served basis</li>
+                                <li>Follow us for updates on special events and schedule changes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Connect With Us:</h5>
+                            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/uclabruindine/" target="_blank">@uclabruindine</a></p>
+                            <p><i class="fas fa-globe"></i> <a href="https://basicneeds.ucla.edu/services/bruin-dine" target="_blank">UCLA Basic Needs - Bruin Dine</a></p>
+                        </div>
+                        
+                        <div class="additional-info">
+                            <h5>Get Involved:</h5>
+                            <p>Bruin Dine is always looking for volunteers to help with food recovery and distribution. Follow their Instagram for volunteer opportunities and updates.</p>
+                            <a href="https://www.instagram.com/uclabruindine/" target="_blank" class="btn">Volunteer with Bruin Dine</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency Swipes Tab -->
+                <div class="tab-content" id="emergency-swipes">
+                    <h3>Emergency Meal Swipes</h3>
+                    <p>Emergency meal swipes are available through the Economic Crisis Response Team (ECRT) for students experiencing temporary food insecurity. These swipes can be used at any UCLA dining facility.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://studentincrisis.ucla.edu/economic-crisis-response" target="_blank" class="btn primary">Apply for Emergency Swipes</a>
+                        <a href="tel:310-206-0406" class="btn secondary">Call ECRT</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Program Details</h4>
+                        <p>The Emergency Meal Swipe program provides immediate food assistance to students experiencing food insecurity. Approved students receive meal swipes that can be used at any UCLA dining facility.</p>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility & Benefits:</h5>
+                            <ul>
+                                <li>Currently enrolled UCLA student</li>
+                                <li>FAFSA-eligible students: Up to 7 emergency meal swipes per quarter</li>
+                                <li>Non-FAFSA eligible students: Up to 14 emergency meal swipes per quarter</li>
+                                <li>No formal application required - contact ECRT directly</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="hours-location">
+                            <h5>How to Apply:</h5>
+                            <ol>
+                                <li>Contact the Economic Crisis Response Team (ECRT) via phone or email</li>
+                                <li>Complete a brief intake with a case manager</li>
+                                <li>If approved, meal swipes will be loaded directly to your BruinCard</li>
+                            </ol>
+                            
+                            <p><strong>ECRT Contact:</strong><br>
+                            <i class="fas fa-phone"></i> (310) 206-0406<br>
+                            <i class="fas fa-envelope"></i> <a href="mailto:ecrt@saonet.ucla.edu">ecrt@saonet.ucla.edu</a></p>
+                            
+                            <p><strong>Office Hours:</strong> Monday-Friday, 8:30 AM - 4:30 PM</p>
+                        </div>
+                        
+                        <div class="additional-info">
+                            <h5>Additional Resources:</h5>
+                            <p>Students may also be eligible for other food assistance programs. ECRT can provide information about:</p>
+                            <ul>
+                                <li>CalFresh application assistance</li>
+                                <li>On-campus food resources</li>
+                                <li>Community food banks and pantries</li>
+                                <li>Other emergency financial assistance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Basic Needs at Strathmore Tab -->
+                <div class="tab-content" id="strathmore">
+                    <h3>Basic Needs at Strathmore</h3>
+                    <p>The Basic Needs Center at Strathmore provides comprehensive support services including food assistance, housing resources, and case management for UCLA students.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://basicneeds.ucla.edu/" target="_blank" class="btn primary">Visit Website</a>
+                        <a href="https://ucla.zoom.us/j/95515402869" target="_blank" class="btn secondary">Join Virtual Lobby</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Services Offered</h4>
+                        <ul>
+                            <li>Food pantry with fresh produce and non-perishables</li>
+                            <li>Case management for housing and basic needs</li>
+                            <li>CalFresh application assistance</li>
+                            <li>Emergency housing resources</li>
+                            <li>Financial wellness counseling</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Hours of Operation:</h5>
+                            <ul>
+                                <li><strong>Monday-Thursday:</strong> 9:00 AM - 6:00 PM</li>
+                                <li><strong>Friday:</strong> 9:00 AM - 5:00 PM</li>
+                                <li><strong>Saturday-Sunday:</strong> Closed</li>
+                            </ul>
+                            
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> 501 Westwood Plaza, Strathmore Building, Los Angeles, CA 90095</p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-phone"></i> (310) 206-3400</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:basicneeds@saonet.ucla.edu">basicneeds@saonet.ucla.edu</a></p>
+                            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/bnatstrath/" target="_blank">@bnatstrath</a></p>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility:</h5>
+                            <p>All currently enrolled UCLA students are eligible for services. Some programs may have additional requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Food Resources Tab -->
+                <div class="tab-content" id="other-food">
+                    <h3>Additional Food Resources</h3>
+                    <p>Explore these additional food resources available to UCLA students.</p>
+                    
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <h4>Krishna Lunch</h4>
+                            <p>Free vegetarian lunch served on campus by the International Society for Krishna Consciousness (ISKCON).</p>
+                            <div class="resource-meta">
+                                <p><i class="fas fa-clock"></i> <strong>When:</strong> Weekdays at 12:30 PM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Where:</strong> Bruin Plaza (weather permitting) or Kerckhoff Hall 150</p>
+                                <p><i class="fas fa-info-circle"></i> <a href="http://www.krishnalunch.com/" target="_blank">More Info</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Café 580</h4>
+                            <p>Free meal program serving dinner to students in need, hosted by local religious organizations.</p>
+                            <div class="resource-meta">
+                                <p><i class="fas fa-clock"></i> <strong>When:</strong> Weekdays at 6:00 PM</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Where:</strong> 580 Hilgard Ave, Los Angeles, CA 90024</p>
+                                <p><i class="fas fa-phone"></i> (310) 208-6511</p>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Swipes for Bruins</h4>
+                            <p>Student-run program that collects donated meal swipes and redistributes them to students in need.</p>
+                            <div class="resource-meta">
+                                <p><i class="fas fa-envelope"></i> <a href="mailto:swipesforbruins@gmail.com">swipesforbruins@gmail.com</a></p>
+                                <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/swipesforbruins/" target="_blank">@swipesforbruins</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="housing" class="resource-category">
+            <h2><i class="fas fa-home"></i> Housing Support</h2>
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="emergency-housing">Emergency Housing</button>
+                    <button class="tab-btn" data-tab="bruin-shelter">Bruin Shelter</button>
+                    <button class="tab-btn" data-tab="housing-relief">USAC Housing Relief Fund</button>
+                    <button class="tab-btn" data-tab="commuter-van">Commuter Van Service</button>
+                </div>
+                
+                <!-- Emergency Housing Tab -->
+                <div class="tab-content active" id="emergency-housing">
+                    <h3>UCLA Emergency Housing</h3>
+                    <p>Short-term emergency housing is available for students experiencing homelessness or housing insecurity. The program provides temporary accommodations while students work with case managers to secure stable housing.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.studentincrisis.ucla.edu/emergency-housing/" target="_blank" class="btn primary">Apply for Emergency Housing</a>
+                        <a href="tel:310-825-0768" class="btn secondary">Call for Assistance</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Program Details</h4>
+                        <ul>
+                            <li>Up to 14 nights of emergency housing per academic year</li>
+                            <li>Private or shared accommodations based on availability</li>
+                            <li>Case management support to find long-term housing</li>
+                            <li>Access to basic amenities (linens, toiletries, etc.)</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Contact Information:</h5>
+                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> (310) 825-0768 (24/7)</p>
+                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:ecrt@saonet.ucla.edu">ecrt@saonet.ucla.edu</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> 106 Bradley Hall, 417 Charles E. Young Drive West</p>
+                            <p><i class="fas fa-clock"></i> <strong>Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM (Walk-ins welcome)</p>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility:</h5>
+                            <ul>
+                                <li>Currently enrolled UCLA student</li>
+                                <li>Experiencing homelessness or housing crisis</li>
+                                <li>No safe or stable place to stay</li>
+                                <li>Willing to work with case managers on a housing plan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bruin Shelter Tab -->
+                <div class="tab-content" id="bruin-shelter">
+                    <h3>Bruin Shelter at UCLA</h3>
+                    <p>Bruin Shelter is a student-run homeless shelter that provides a safe place to sleep, meals, and resources for college students experiencing homelessness in the Los Angeles area.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.bruinshelter.org/" target="_blank" class="btn primary">Visit Website</a>
+                        <a href="https://www.bruinshelter.org/apply" target="_blank" class="btn secondary">Apply for Housing</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Services Provided</h4>
+                        <ul>
+                            <li>Safe overnight accommodations</li>
+                            <li>Dinner and breakfast</li>
+                            <li>Access to showers and laundry facilities</li>
+                            <li>Case management and housing navigation</li>
+                            <li>Referrals to campus and community resources</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Location & Hours:</h5>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 10830 Le Conte Ave, Los Angeles, CA 90024 (First Presbyterian Church)</p>
+                            <p><i class="fas fa-clock"></i> <strong>Check-in:</strong> 8:00 PM - 10:00 PM (Daily)</p>
+                            <p><i class="fas fa-clock"></i> <strong>Check-out:</strong> 7:00 AM (Weekdays), 9:00 AM (Weekends)</p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:info@bruinshelter.org">info@bruinshelter.org</a></p>
+                            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/bruinshelter/" target="_blank">@bruinshelter</a></p>
+                            <p><i class="fas fa-phone"></i> (424) 535-8880</p>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility Requirements:</h5>
+                            <ul>
+                                <li>Currently enrolled in a college or university in Los Angeles County</li>
+                                <li>Between 18-24 years old</li>
+                                <li>Experiencing homelessness or housing insecurity</li>
+                                <li>Must pass background check</li>
+                                <li>Willing to follow shelter guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- USAC Housing Relief Fund Tab -->
+                <div class="tab-content" id="housing-relief">
+                    <h3>USAC Housing Relief Fund</h3>
+                    <p>The Undergraduate Students Association Council (USAC) Housing Relief Fund provides financial assistance to UCLA students facing housing insecurity or emergency housing situations.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://usac.ucla.edu/funding/housing-relief-fund/" target="_blank" class="btn primary">Apply for Funding</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdH2jZ2X1VnI2D9mJ7L8N5HXfYQ8w1J3v5wX8q3w1y8t3QYQ/viewform" target="_blank" class="btn secondary">Donate to the Fund</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Program Details</h4>
+                        <ul>
+                            <li>One-time grants up to $500 per academic year</li>
+                            <li>Funds can be used for rent, security deposits, or temporary housing</li>
+                            <li>Average processing time: 7-10 business days</li>
+                            <li>Funds distributed via direct deposit or check</li>
+                        </ul>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility Criteria:</h5>
+                            <ul>
+                                <li>Currently enrolled UCLA undergraduate student</li>
+                                <li>Demonstrated financial need</li>
+                                <li>Facing housing insecurity or emergency housing situation</li>
+                                <li>Must submit supporting documentation</li>
+                                <li>Must meet with a case manager</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:usac.housing@asucla.ucla.edu">usac.housing@asucla.ucla.edu</a></p>
+                            <p><i class="fas fa-phone"></i> (310) 825-2961</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> 308 Westwood Plaza, Kerckhoff Hall 250</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commuter Van Service Tab -->
+                <div class="tab-content" id="commuter-van">
+                    <h3>UCLA Commuter Van Service</h3>
+                    <p>Free van service for UCLA students who live off-campus and need safe transportation during late-night hours.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.transportation.ucla.edu/commute/vanpool/commuter-van-service" target="_blank" class="btn primary">View Service Area</a>
+                        <a href="tel:310-825-4433" class="btn secondary">Call for Pickup</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Service Information</h4>
+                        <ul>
+                            <li>Free door-to-door service within designated zones</li>
+                            <li>Available during academic quarters only</li>
+                            <li>Operates 7 days a week during evening/night hours</li>
+                            <li>Real-time tracking available via mobile app</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Hours of Operation:</h5>
+                            <ul>
+                                <li><strong>Sunday-Thursday:</strong> 6:00 PM - 2:30 AM</li>
+                                <li><strong>Friday-Saturday:</strong> 6:00 PM - 3:00 AM</li>
+                            </ul>
+                            
+                            <h5>How to Use:</h5>
+                            <ol>
+                                <li>Download the "UCLA Van Service" app</li>
+                                <li>Create an account with your UCLA email</li>
+                                <li>Request a ride within the service area</li>
+                                <li>Show your BruinCard to the driver</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-phone"></i> (310) 825-4433</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:commute@ts.ucla.edu">commute@ts.ucla.edu</a></p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.transportation.ucla.edu/" target="_blank">UCLA Transportation Website</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="health" class="resource-category">
+            <h2><i class="fas fa-heartbeat"></i> Health & Wellness</h2>
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="caps">CAPS & Mental Health</button>
+                    <button class="tab-btn" data-tab="core-program">CAPS CORE Program</button>
+                    <button class="tab-btn" data-tab="asic">ASUCLA Student Wellness</button>
+                    <button class="tab-btn" data-tab="other-health">Other Health Resources</button>
+                </div>
+                
+                <!-- CAPS & Mental Health Tab -->
+                <div class="tab-content active" id="caps">
+                    <h3>Counseling and Psychological Services (CAPS)</h3>
+                    <p>CAPS provides mental health services to support students' emotional, psychological, and social well-being through individual counseling, group therapy, crisis intervention, and psychiatric services.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.counseling.ucla.edu/" target="_blank" class="btn primary">Visit CAPS Website</a>
+                        <a href="tel:310-825-0768" class="btn secondary">24/7 Crisis Line</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Services Offered</h4>
+                        <ul>
+                            <li>Individual counseling (short-term)</li>
+                            <li>Group therapy and workshops</li>
+                            <li>Psychiatric services including medication management</li>
+                            <li>Crisis intervention</li>
+                            <li>Mindfulness and stress reduction programs</li>
+                            <li>Referrals to community providers</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Location & Hours:</h5>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>John Wooden Center West</strong><br>
+                            221 Westwood Plaza, Los Angeles, CA 90095</p>
+                            
+                            <p><i class="fas fa-clock"></i> <strong>Fall 2025 Hours:</strong><br>
+                            Monday-Friday: 8:00 AM - 5:00 PM<br>
+                            <em>After-hours crisis counseling available 24/7 by phone</em></p>
+                            
+                            <p><i class="fas fa-phone"></i> <strong>24/7 Crisis Line:</strong> (310) 825-0768</p>
+                            <p><i class="fas fa-phone"></i> <strong>Appointments:</strong> (310) 825-0768</p>
+                        </div>
+                        
+                        <div class="eligibility">
+                            <h5>Eligibility & Cost:</h5>
+                            <ul>
+                                <li>All currently registered UCLA students are eligible for services</li>
+                                <li>Initial consultation is free</li>
+                                <li>Most services are covered by UC SHIP insurance</li>
+                                <li>Reduced fees available for students with financial need</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CAPS CORE Program Tab -->
+                <div class="tab-content" id="core-program">
+                    <h3>CAPS CORE Program (Community of Resources and Education)</h3>
+                    <p>The CORE Program provides specialized mental health services for students from historically underrepresented and underserved communities, with a focus on cultural responsiveness and social justice.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.counseling.ucla.edu/services/core-program" target="_blank" class="btn primary">Learn About CORE</a>
+                        <a href="https://ucla.zoom.us/j/92655492710" target="_blank" class="btn secondary">Join Drop-in Hours</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Program Components</h4>
+                        <ul>
+                            <li>Identity-based support groups</li>
+                            <li>Community healing spaces</li>
+                            <li>Workshops on mental health and wellness</li>
+                            <li>Peer support programs</li>
+                            <li>Culturally responsive counseling</li>
+                        </ul>
+                        
+                        <div class="hours-location">
+                            <h5>Drop-in Hours (Virtual):</h5>
+                            <ul>
+                                <li><strong>Mondays:</strong> 3:00 PM - 4:30 PM (BIPOC Space)</li>
+                                <li><strong>Tuesdays:</strong> 2:00 PM - 3:30 PM (LGBTQ+ Space)</li>
+                                <li><strong>Wednesdays:</strong> 1:00 PM - 2:30 PM (First-Gen Students)</li>
+                                <li><strong>Thursdays:</strong> 11:00 AM - 12:30 PM (Undocumented Students)</li>
+                                <li><strong>Fridays:</strong> 10:00 AM - 11:30 AM (Graduate Students)</li>
+                            </ul>
+                            
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> John Wooden Center West, 2nd Floor</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:coreprogram@caps.ucla.edu">coreprogram@caps.ucla.edu</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ASI Student Wellness Tab -->
+                <div class="tab-content" id="asic">
+                    <h3>ASUCLA Student Wellness Commission</h3>
+                    <p>The Student Wellness Commission (SWC) is a student-run organization that promotes holistic health and wellness through education, advocacy, and direct service programs.</p>
+                    
+                    <div class="resource-actions">
+                        <a href="https://www.studentwellness.ucla.edu/" target="_blank" class="btn primary">Visit SWC Website</a>
+                        <a href="https://www.instagram.com/uclaswc/" target="_blank" class="btn secondary">Follow on Instagram</a>
+                    </div>
+                    
+                    <div class="resource-details">
+                        <h4>Programs and Services</h4>
+                        <div class="resource-cards">
+                            <div class="resource-card">
+                                <h5>Bruin Consent Coalition</h5>
+                                <p>Education and advocacy around consent, healthy relationships, and sexual violence prevention.</p>
+                                <p><i class="fas fa-envelope"></i> <a href="mailto:bruinconsent@asucla.ucla.edu">bruinconsent@asucla.ucla.edu</a></p>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <h5>Mindful UCLA</h5>
+                                <p>Free mindfulness meditation sessions and workshops for stress reduction.</p>
+                                <p><i class="fas fa-calendar"></i> Weekly sessions on Tuesdays at 6 PM</p>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <h5>EatWell Pod</h5>
+                                <p>Promoting positive body image and healthy relationships with food.</p>
+                                <p><i class="fas fa-utensils"></i> Cooking demos and nutrition workshops</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h5>Contact:</h5>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Office:</strong> 308 Westwood Plaza, Kerckhoff Hall 308</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:swc@asucla.ucla.edu">swc@asucla.ucla.edu</a></p>
+                            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/uclaswc/" target="_blank">@uclaswc</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Health Resources Tab -->
+                <div class="tab-content" id="other-health">
+                    <h3>Additional Health Resources</h3>
+                    <p>Explore these additional health and wellness resources available to UCLA students.</p>
+                    
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <h4>Arthur Ashe Student Health & Wellness Center</h4>
+                            <p>Primary medical care, women's health, immunizations, and more.</p>
+                            <p><i class="fas fa-phone"></i> (310) 825-4073</p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.studenthealth.ucla.edu/" target="_blank">Visit Website</a></p>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>UCLA RISE Center</h4>
+                            <p>Support for survivors of sexual and gender-based violence.</p>
+                            <p><i class="fas fa-phone"></i> 24/7 Hotline: (310) 206-2465</p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.sexualviolence.ucla.edu/" target="_blank">Visit Website</a></p>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>UCLA Recreation</h4>
+                            <p>Fitness classes, intramural sports, and outdoor adventures.</p>
+                            <p><i class="fas fa-dumbbell"></i> Free for all students with BruinCard</p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.recreation.ucla.edu/" target="_blank">Visit Website</a></p>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>UCLA Mindful App</h4>
+                            <p>Free guided meditations and mindfulness exercises.</p>
+                            <p><i class="fab fa-apple"></i> <a href="https://apps.apple.com/us/app/ucla-mindful/id1550300116" target="_blank">Download on App Store</a></p>
+                            <p><i class="fab fa-google-play"></i> <a href="https://play.google.com/store/apps/details?id=edu.ucla.mindful" target="_blank">Get it on Google Play</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Emergency Contacts</h4>
+                    <p><i class="fas fa-phone"></i> CAPS 24/7: (310) 825-0768</p>
+                    <p><i class="fas fa-phone"></i> Basic Needs Center: (310) 206-0404</p>
+                    <p><i class="fas fa-phone"></i> ECRT: (310) 825-0768</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="https://basicneeds.ucla.edu/" target="_blank">UCLA Basic Needs</a>
+                    <a href="https://counseling.ucla.edu/" target="_blank">CAPS</a>
+                    <a href="https://www.studentincrisis.ucla.edu/" target="_blank">Student in Crisis</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/uclabasicneeds/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/UCLABasicNeeds/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/uclabasicneeds" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 UCLA Basic Needs Dashboard | Created for COMM115</p>
+                <p><a href="#" class="back-to-top">Back to Top <i class="fas fa-arrow-up"></i></a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Main scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="js/visualizations.js"></script>
+</body>
+</html>
